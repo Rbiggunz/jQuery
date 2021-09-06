@@ -1,0 +1,23 @@
+// POPUP SCRIPT
+$(window).on('load', function (e) {
+  $(".custom-modal-main").addClass('modal-open');
+
+  $(".close-btn, .bg-overlay").click(function () {
+    $(".custom-modal-main").removeClass('modal-open');
+    $('body').css('overflow', 'auto');
+  });
+
+  $(".close-link").click(function () {
+    e.preventDefault();
+    $(".custom-modal-main").removeClass('modal-open');
+    $('body').css('overflow', 'auto');
+	
+  });
+
+  
+  if ($(".custom-modal-main").hasClass("modal-open")) {
+    $('body').css('overflow', 'hidden');
+  }
+
+});
+// END: POPUP SCRIPT
