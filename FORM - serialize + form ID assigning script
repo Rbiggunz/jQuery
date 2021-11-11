@@ -1,1 +1,34 @@
 
+jQuery(document).ready(function ($) {
+
+$("form[name='competition_contact_form']").on('input', function () {
+
+    $(this).attr('id', 'competition_contact_form-active');
+});
+
+    $("form[name='competition_contact_form']").submit(function () {
+        event.preventDefault(event);
+        $("button[name='btn-competition-submit'] i").fadeIn(3000);
+        $("button[name='btn-competition-submit'] .button-text").text("Sending...");
+        
+
+        setTimeout(function () {
+            $.ajax({
+                type: 'POST',
+                url: '/integrations/campaignmonitor/mailer.php',
+                data: $("#competition_contact_form-active").serialize(),
+                success: function () {
+		    $("#competition_contact_form-active").trigger("reset");
+                    $("button[name='btn-competition-submit'] i").fadeOut("fast");
+                    $("button[name='btn-competition-submit'] .button-text").text("Thank You!");
+                    setTimeout(function () {
+                        $("button[name='btn-competition-submit'] .button-text").text("SUBMIT");
+                    }, 4000);
+
+                }
+            });
+        }, 3000);
+
+
+    });
+});
