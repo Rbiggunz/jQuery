@@ -1,0 +1,51 @@
+applied in portfolio, so when image div is getting class is-active, overlay with alt tag appears on the top.
+https://www.queensberryrealestate.com/portfolio/heart-of-the-city/
+
+Description on SO:
+https://stackoverflow.com/questions/1950038/firing-events-on-css-class-changes-in-jquery/1950052#1950052
+
+code applied:
+
+jQuery(function() {
+    (function($) {
+        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+    
+        jQuery.fn.attrchange = function(callback) {
+            if (MutationObserver) {
+                var options = {
+                    subtree: false,
+                    attributes: true
+                };
+    
+                var observer = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(e) {
+                        callback.call(e.target, e.attributeName);
+                    });
+                });
+    
+                return this.each(function() {
+                    observer.observe(this, options);
+                });
+    
+            }
+        }
+    })(jQuery);
+    
+    //Now you need to append event listener
+    jQuery('body .flickity-slider .cell').attrchange(function(attrName) {
+    
+        if(attrName=='class'){
+            if((jQuery('.cell').hasClass('is-selected')) && (jQuery(".is-selected > img").attr("alt") !== '')){
+            var alt = jQuery(".is-selected > img").attr("alt");
+            var p_overlay = '<span id="portfolio-overlay" style="font-size: 16px; font-weight: 600; color: white; z-index: 1000; position: absolute; bottom: 0; left: 0; right: 0; padding: 5%; background-color: #000000b3;">' + alt + '<span>';
+            jQuery(".cell.is-selected").prepend( jQuery(p_overlay).delay(200).show() );
+            }else {
+                jQuery('.cell').find('span#portfolio-overlay').fadeOut();
+            }
+
+        }else {
+                /* if other DOM elements are changed = no action within this script */
+        }
+    
+    });
+    });
