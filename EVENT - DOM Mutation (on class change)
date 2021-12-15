@@ -1,4 +1,9 @@
-applied in portfolio, so when image div is getting class is-active, overlay with alt tag appears on the top.
+JS Method to observe changes made in DOM.
+DOCUMENTATION:
+https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver/observe
+
+
+Example applied in Queensberyrealestate.com portfolio, so when image div is getting class is-active, overlay with alt tag appears on the top.
 https://www.queensberryrealestate.com/portfolio/heart-of-the-city/
 
 Description on SO:
