@@ -1,0 +1,2 @@
+jQuery('input').val("00");
+jQuery('textarea').val("00");
