@@ -1,0 +1,52 @@
+//On specific page load, scroll to the section and activate tab
+document.addEventListener("DOMContentLoaded", function(){
+    jQuery(function($) {
+              if (window.location.hash == "#s-news-research-main") {	 
+		  
+				jQuery('html, body').animate({
+				   scrollTop: jQuery("#s-news-research-main").offset().top - 200
+				 }, 1000);
+				  
+				 window.addEventListener('load', function(){
+					 document.getElementById('elementor-tab-title-6572').click();
+				}, false);	
+      }
+    })
+})
+
+//MOB ONLY: On specific page load, scroll to the section and activate tab
+jQuery( document ).ready(function() {
+//script will only work on screens =< 991px
+//MEDIA QUERIES FUNCTION
+function checkScreenSize(screenSize) {
+    if (screenSize.matches) { // If media query matches
+
+            jQuery(function($) {
+                      if (window.location.hash == "#s-news-research-main") {	 
+                  
+                        jQuery('html, body').animate({
+                           scrollTop: jQuery("#s-news-research-main").offset().top - 200
+                         }, 1000);
+                          
+                         window.addEventListener('load', function(){
+                             document.getElementById('elementor-tab-title-1032').click();
+                        }, false);	
+              }
+            })
+        
+    }
+    else {
+        //script won't be executed
+    }
+    
+}
+
+//Set max window width
+var screenSize = window.matchMedia("(max-width: 991px)");
+// Call listener function at run time
+checkScreenSize(screenSize);
+// Attach listener function on state changes
+screenSize.addListener(checkScreenSize);
+//END: media queries function
+
+});
