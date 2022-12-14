@@ -1,0 +1,15 @@
+disable CORS policy in chrome(don't surf internet through this session or will be hacked):
+Execute the following command: chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
+guide: https://exerror.com/response-to-preflight-request-doesnt-pass-access-control-check-no-access-control-allow-origin-header-is-present-on-the-requested-resource/
+
+
+    
+    $(document).ready(function () {
+        $.get('https://uk.trustpilot.com/review/www.okbeautyhair.co.uk', function(html) {
+            //console.log(html);
+            var data = html;
+            //$(html.has'[class="section-header"]').html()
+            // data-reviews-count-typography="true"
+            console.log($(data).find('[data-reviews-count-typography="true"]').html());
+        });
+     }); 
