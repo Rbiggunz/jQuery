@@ -1,0 +1,8 @@
+$(document).ready(function() {
+    $('textarea[maxlength]').on('input', function() {
+        const maxLength = parseInt($(this).attr('maxlength'));
+        if ($(this).val().length > maxLength) {
+            $(this).val($(this).val().substring(0, maxLength));
+        }
+    });
+});
